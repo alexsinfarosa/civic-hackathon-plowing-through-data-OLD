@@ -16,7 +16,8 @@ config.params = {
   attributionControl: false
 };
 config.tileLayer = {
-  uri: "http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+  // uri: "http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+  uri: "http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png",
   params: {
     minZoom: 9,
     id: "",
