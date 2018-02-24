@@ -12,8 +12,8 @@ export default class SyracuseMap extends Component {
   constructor() {
     super();
     this.state = {
-      lat: 43.0481,
-      lng: -76.1474,
+      lat: 43.035,
+      lng: -76.14,
       zoom: 13
     };
   }
@@ -26,8 +26,9 @@ export default class SyracuseMap extends Component {
   }
 
   lineColor = d => {
+    console.log(d.properties);
     let style = { color: "red" };
-    d.properties.OBJECTID > 2000
+    d.properties.CFCC === "A40"
       ? (style = { color: "red" })
       : (style = { color: "green" });
     return style;
@@ -37,7 +38,7 @@ export default class SyracuseMap extends Component {
     const position = [this.state.lat, this.state.lng];
     return (
       <Map
-        style={{ width: "100%", height: "100vh" }}
+        style={{ width: "100%", height: "90vh" }}
         center={position}
         zoom={this.state.zoom}
         ref={m => (this.leafletMap = m)}
