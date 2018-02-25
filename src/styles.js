@@ -16,3 +16,28 @@ export const Top = styled.div`
   height: 10vh;
   background: #fff;
 `;
+
+export const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90vh;
+  background: #fff;
+  padding: 10px;
+`;
+
+export const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 250px;
+  // height: 100vh;
+  background: #fff;
+`;
+
+export const Right = styled.div`
+  display: flex;
+  flex: 3;
+  // height: 90vh;
+  background: #fff;
+`;

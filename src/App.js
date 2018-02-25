@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
 
 // styled
-import { Main, Top } from "./styles";
+import { Main, Top, Body } from "./styles";
 // import { Slider } from "antd";
 
 // component
