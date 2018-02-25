@@ -8,7 +8,7 @@ import {
   GeoJSON
 } from "react-leaflet";
 
-import { Body, Left, Right } from "../styles";
+import { Body, Left, Right, WSlider } from "../styles";
 import { Slider } from "antd";
 
 function formatter(value) {
@@ -79,11 +79,11 @@ export default class SyracuseMap extends Component {
 
     return (
       <Body>
-        <div style={{ margin: "20px 40px" }}>
+        <WSlider>
           <Slider marks={marks} defaultValue={25} tipFormatter={formatter} />
-        </div>
+        </WSlider>
         <Map
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "90%" }}
           center={position}
           zoom={this.state.zoom}
           ref={m => (this.leafletMap = m)}

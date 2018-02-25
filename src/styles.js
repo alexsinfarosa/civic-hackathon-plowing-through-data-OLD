@@ -9,12 +9,16 @@ export const Main = styled.div`
 
 export const Top = styled.div`
   display: flex;
-  flex-direction: column;
+  height: 10vh;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 10vh;
   background: #fff;
+`;
+
+export const WSlider = styled.div`
+  height: 10%;
+  margin: 25px 0px 0 25px;
 `;
 
 export const Body = styled.div`

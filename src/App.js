@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Main>
         <Top>
-          <h2>Civic-Hackathon-Plowing-Through-Data</h2>
+          <h1>Civic Hackathon: Plowing Through The Data</h1>
         </Top>
         <SyracuseMap />
       </Main>
