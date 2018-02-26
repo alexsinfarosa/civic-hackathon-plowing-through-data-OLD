@@ -88,19 +88,19 @@ class App extends Component {
               <div>
                 <Row>
                   <Grey />
-                  Not Plowed
+                  not plowed
                 </Row>
                 <Row>
                   <Green />
-                  &ge; 0 and &le; 3
+                  0 - 6
                 </Row>
                 <Row>
                   <Orange />
-                  &ge; 3 and &le; 6
+                  6 - 12
                 </Row>
                 <Row>
                   <Red />
-                  &ge; 6
+                  greater than 12
                 </Row>
               </div>
             </Legend>

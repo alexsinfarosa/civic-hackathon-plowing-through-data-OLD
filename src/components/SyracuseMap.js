@@ -39,15 +39,15 @@ export default class SyracuseMap extends Component {
         let style = { color: "" };
 
         // console.log(lineColor[i]);
-        if (lapsedTime >= 0 && lapsedTime <= 3) {
+        if (lapsedTime >= 0 && lapsedTime <= 6) {
           style = { color: "green", opacity: 0.7 };
         }
 
-        if (lapsedTime > 3 && lapsedTime <= 6) {
+        if (lapsedTime > 6 && lapsedTime <= 12) {
           style = { color: "orange", opacity: 0.7 };
         }
 
-        if (lapsedTime > 6) {
+        if (lapsedTime > 12) {
           style = { color: "red", opacity: 0.7 };
         }
 

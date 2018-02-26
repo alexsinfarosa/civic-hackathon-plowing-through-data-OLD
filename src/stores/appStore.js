@@ -33,15 +33,29 @@ export default class AppStore {
 
   @computed
   get max() {
-    return this.min + 96 * 3600000;
+    return this.min + 94 * 3600000;
   }
 
   @computed
   get marks() {
     let dates = {};
-    for (let index = 0; index < 97; index += 12) {
+    for (let index = 0; index < 95; index++) {
       const date = format(new Date(this.min + index * 3600000), "MM/DD HH:00");
-      dates[this.min + index * 3600000] = date;
+      if (
+        index === 0 ||
+        index === 12 ||
+        index === 24 ||
+        index === 36 ||
+        index === 48 ||
+        index === 60 ||
+        index === 72 ||
+        index === 84
+      ) {
+        dates[this.min + index * 3600000] = date;
+      }
+      if (index === 94) {
+        dates[this.min + index * 3600000] = date;
+      }
     }
     return dates;
   }
@@ -55,8 +69,21 @@ export default class AppStore {
   };
 
   @computed
+  get sliderIndeces() {
+    let dates = [];
+    for (let index = 0; index < 95; index += 2) {
+      dates.push(this.min + index * 3600000);
+    }
+    return dates;
+  }
+
+  @computed
   get sliderIdx() {
-    return this.marks[this.valueSlider];
+    const idx = this.sliderIndeces.indexOf(this.valueSlider);
+    if (idx === -1) {
+      return 0;
+    }
+    return idx;
   }
 
   @computed
