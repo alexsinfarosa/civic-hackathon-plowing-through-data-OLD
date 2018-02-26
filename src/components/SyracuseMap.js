@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import geojson from "../assets/geojson.json";
+import { inject, observer } from "mobx-react";
+
 import {
   Map,
   TileLayer,
@@ -8,21 +9,8 @@ import {
   GeoJSON
 } from "react-leaflet";
 
-import { Body, Left, Right, WSlider } from "../styles";
-import { Slider } from "antd";
-
-function formatter(value) {
-  return `${marks[value]}`;
-}
-
-const marks = {
-  0: "March 12th",
-  25: "March 13th",
-  50: "March 14th",
-  75: "March 15th",
-  100: "March 16th"
-};
-
+@inject("app")
+@observer
 export default class SyracuseMap extends Component {
   constructor() {
     super();
@@ -36,35 +24,31 @@ export default class SyracuseMap extends Component {
   componentDidMount() {
     const leafletMap = this.leafletMap.leafletElement;
     leafletMap.on("zoomend", () => {
-      window.console.log("Current zoom level -> ", leafletMap.getZoom());
+      console.log("Current zoom level -> ", leafletMap.getZoom());
     });
   }
 
-  lineColor = d => {
-    // console.log(d);
-    let style = { color: "red" };
-    d.properties.CFCC === "A40"
-      ? (style = { color: "red" })
-      : (style = { color: "green" });
-    return style;
-  };
-
   render() {
     const position = [this.state.lat, this.state.lng];
-    const labelList = geojson.features.map((o, i) => {
-      if (i < 20) {
-        return <li>{o.properties.FULLNAME}</li>;
-      }
-    });
+    const { allData } = this.props.app;
 
     const RenderGeojson = d => {
-      return geojson.features.map(obj => {
+      return allData.map((obj, i) => {
         const { properties } = obj;
+        const lapsedTime = properties.LT;
         let style = { color: "" };
 
-        console.log(obj);
-        if (properties.CFCC === "A21") {
-          style = { color: "red", opacity: 0.5 };
+        // console.log(lineColor[i]);
+        if (lapsedTime >= 0 && lapsedTime <= 3) {
+          style = { color: "green", opacity: 0.7 };
+        }
+
+        if (lapsedTime > 3 && lapsedTime <= 6) {
+          style = { color: "orange", opacity: 0.7 };
+        }
+
+        if (lapsedTime > 6) {
+          style = { color: "red", opacity: 0.7 };
         }
 
         return (
@@ -78,20 +62,15 @@ export default class SyracuseMap extends Component {
     };
 
     return (
-      <Body>
-        <WSlider>
-          <Slider marks={marks} defaultValue={25} tipFormatter={formatter} />
-        </WSlider>
-        <Map
-          style={{ width: "100%", height: "90%" }}
-          center={position}
-          zoom={this.state.zoom}
-          ref={m => (this.leafletMap = m)}
-        >
-          <TileLayer url="http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png" />
-          {<RenderGeojson />}
-        </Map>
-      </Body>
+      <Map
+        style={{ width: "100%", height: "100%" }}
+        center={position}
+        zoom={this.state.zoom}
+        ref={m => (this.leafletMap = m)}
+      >
+        <TileLayer url="http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png" />
+        <RenderGeojson />
+      </Map>
     );
   }
 }
