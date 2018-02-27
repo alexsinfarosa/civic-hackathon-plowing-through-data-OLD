@@ -20,7 +20,7 @@ import {
 
 // component
 import SyracuseMap from "./components/SyracuseMap";
-import logo from "./assets/Logo.jpeg";
+import logo from "./assets/Logo.png";
 import { Slider, Radio } from "antd";
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
