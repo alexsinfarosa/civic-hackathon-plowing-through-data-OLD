@@ -14,16 +14,22 @@ export default class AppStore {
   @observable date = new Date("2017/03/13 00:00:00");
   @action setDate = d => (this.date = d);
 
+  @observable dataSet = "a";
+  @action setDataSet = d => (this.dataSet = d);
+
   @computed
   get dateRadio() {
+    if (this.dataSet === "a") {
+      return new Date("2017/03/13 00:00:00");
+    }
+
     if (this.dataSet === "b") {
       return new Date("2018/01/01 00:00:00");
     }
-    if (this.dataSet === "c") {
-      return new Date("2018/01/06 00:00:00");
-    }
 
-    return new Date("2017/03/13 00:00:00");
+    // if (this.dataSet === "c") {
+    return new Date("2018/01/06 00:00:00");
+    // }
   }
 
   @computed
@@ -93,7 +99,4 @@ export default class AppStore {
       return feature;
     });
   }
-
-  @observable dataSet = "a";
-  @action setDataSet = d => (this.dataSet = d);
 }

@@ -21,13 +21,26 @@ import {
 // component
 import SyracuseMap from "./components/SyracuseMap";
 import logo from "./assets/Logo.png";
-import { Slider, Radio } from "antd";
+import { Slider, Radio, Modal, Button } from "antd";
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
 @inject("app")
 @observer
 class App extends Component {
+  info = () => {
+    Modal.info({
+      title: "This is a notification message",
+      content: (
+        <div>
+          <p>some messages...some messages...</p>
+          <p>some messages...some messages...</p>
+        </div>
+      ),
+      onOk() {}
+    });
+  };
+
   render() {
     const {
       min,
@@ -35,8 +48,10 @@ class App extends Component {
       marks,
       setValueSlider,
       formatter,
-      setDataSet
+      setDataSet,
+      dataSet
     } = this.props.app;
+    console.log(dataSet);
 
     return (
       <Main>
@@ -71,13 +86,39 @@ class App extends Component {
                 size="small"
                 onChange={e => setDataSet(e.target.value)}
               >
-                <RadioButton style={{ width: 170, marginBottom: 15 }} value="a">
+                <RadioButton
+                  style={{
+                    width: 170,
+                    marginBottom: 15,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignitems: "center"
+                  }}
+                  value="a"
+                >
                   03/13/17 - 03/17/17
                 </RadioButton>
-                <RadioButton style={{ width: 170, marginBottom: 15 }} value="b">
+                <RadioButton
+                  style={{
+                    width: 170,
+                    marginBottom: 15,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignitems: "center"
+                  }}
+                  value="b"
+                >
                   01/01/18 - 01/04/18
                 </RadioButton>
-                <RadioButton style={{ width: 170 }} value="c">
+                <RadioButton
+                  style={{
+                    width: 170,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignitems: "center"
+                  }}
+                  value="c"
+                >
                   01/06/18 - 01/09/18
                 </RadioButton>
               </RadioGroup>
@@ -104,6 +145,14 @@ class App extends Component {
                 </Row>
               </div>
             </Legend>
+            <div style={{ margin: "0 auto" }}>
+              <Button
+                // type="primary"
+                shape="circle"
+                icon="info"
+                onClick={this.info}
+              />
+            </div>
           </Left>
 
           <Right>
