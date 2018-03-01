@@ -1,5 +1,5 @@
 import { observable, action, computed } from "mobx";
-import dataJson from "../assets/data.json";
+import dataJson from "../assets/LT_J1_4.json";
 
 import format from "date-fns/format";
 import getTime from "date-fns/get_time";
