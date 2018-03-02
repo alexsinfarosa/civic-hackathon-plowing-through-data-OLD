@@ -20,7 +20,7 @@ import {
 
 // component
 import SyracuseMap from "./components/SyracuseMap";
-import logo from "./assets/Logo.png";
+import logo from "./assets/logo.png";
 import { Slider, Radio, Modal, Button, Icon } from "antd";
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -149,7 +149,7 @@ class App extends Component {
                 </Row>
                 <Row>
                   <Orange />
-                  13 - 24
+                  12 - 24
                 </Row>
                 <Row>
                   <Red />
