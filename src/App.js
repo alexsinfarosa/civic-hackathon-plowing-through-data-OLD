@@ -33,13 +33,25 @@ class App extends Component {
       title: "The Snow Plow Coverage Time Lapse",
       content: (
         <div>
-          <p>The map is meant to provide a graphical display of where snow plows have been during 3 different time periods.</p>
-          
-          <p>The slider bar at the top of the screen moves the time forward or backwards in 2-hour increments.</p>
-          
-          <p>The color of the streets is an indicator of how long it has been since a plow was present on that street.</p>
-          
-          <p>Please note that the map does not indicate what sort of activity, if any, the plow performed while on a particular street.</p>
+          <p>
+            The map is meant to provide a graphical display of where snow plows
+            have been during 3 different time periods.
+          </p>
+
+          <p>
+            The slider bar at the top of the screen moves the time forward or
+            backwards in 2-hour increments.
+          </p>
+
+          <p>
+            The color of the streets is an indicator of how long it has been
+            since a plow was present on that street.
+          </p>
+
+          <p>
+            Please note that the map does not indicate what sort of activity, if
+            any, the plow performed while on a particular street.
+          </p>
         </div>
       ),
       onOk() {}
@@ -75,17 +87,12 @@ class App extends Component {
         <Body>
           <Left>
             <Title>
-              <img src={logo} alt="logo" />
+              <img src={logo} alt="logo" width={80} height={80} />
               <br />
               <h2 style={{ color: "#261C15", lineHeight: 1.3 }}>
                 Snow Plow Coverage Time Lapse
               </h2>
-              <Button
-                style={{ margin: "0 15px" }}
-                // shape="circle"
-                icon="info"
-                onClick={this.info}
-              >
+              <Button size="small" icon="info" onClick={this.info}>
                 How to use the map
               </Button>
             </Title>
@@ -101,7 +108,7 @@ class App extends Component {
                 <RadioButton
                   style={{
                     width: 170,
-                    marginBottom: 15,
+                    marginBottom: 10,
                     display: "flex",
                     justifyContent: "center",
                     alignitems: "center"
@@ -113,7 +120,7 @@ class App extends Component {
                 <RadioButton
                   style={{
                     width: 170,
-                    marginBottom: 15,
+                    marginBottom: 10,
                     display: "flex",
                     justifyContent: "center",
                     alignitems: "center"

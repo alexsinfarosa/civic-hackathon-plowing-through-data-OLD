@@ -17,7 +17,6 @@ export const Top = styled.div`
   background: #fff;
 `;
 
-
 export const Body = styled.div`
   display: flex;
   width: 100%;
@@ -68,7 +67,7 @@ export const Row = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
-  height: 36px;
+  height: 20px;
 `;
 
 export const Grey = styled.div`
