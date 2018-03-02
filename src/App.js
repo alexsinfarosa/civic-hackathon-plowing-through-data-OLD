@@ -171,14 +171,18 @@ class App extends Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button icon="github">Alex</Button>
+                <Button icon="github" size="small">
+                  Alex
+                </Button>
               </a>
               <a
                 href="https://github.com/d-w-olin/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button icon="github">Dean</Button>
+                <Button icon="github" size="small">
+                  Dean
+                </Button>
               </a>
             </div>
           </Left>
