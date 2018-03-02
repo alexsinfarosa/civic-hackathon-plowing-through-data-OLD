@@ -21,7 +21,7 @@ import {
 // component
 import SyracuseMap from "./components/SyracuseMap";
 import logo from "./assets/Logo.png";
-import { Slider, Radio, Modal, Button } from "antd";
+import { Slider, Radio, Modal, Button, Icon } from "antd";
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
@@ -30,11 +30,16 @@ const RadioGroup = Radio.Group;
 class App extends Component {
   info = () => {
     Modal.info({
-      title: "This is a notification message",
+      title: "The Snow Plow Coverage Time Lapse",
       content: (
         <div>
-          <p>some messages...some messages...</p>
-          <p>some messages...some messages...</p>
+          <p>The map is meant to provide a graphical display of where snow plows have been during 3 different time periods.</p>
+          
+          <p>The slider bar at the top of the screen moves the time forward or backwards in 2-hour increments.</p>
+          
+          <p>The color of the streets is an indicator of how long it has been since a plow was present on that street.</p>
+          
+          <p>Please note that the map does not indicate what sort of activity, if any, the plow performed while on a particular street.</p>
         </div>
       ),
       onOk() {}
@@ -49,9 +54,8 @@ class App extends Component {
       setValueSlider,
       formatter,
       setDataSet,
-      dataSet
+      isLoading
     } = this.props.app;
-    console.log(dataSet);
 
     return (
       <Main>
@@ -76,6 +80,14 @@ class App extends Component {
               <h2 style={{ color: "#261C15", lineHeight: 1.3 }}>
                 Snow Plow Coverage Time Lapse
               </h2>
+              <Button
+                style={{ margin: "0 15px" }}
+                // shape="circle"
+                icon="info"
+                onClick={this.info}
+              >
+                How to use the map
+              </Button>
             </Title>
 
             <DataSetButtons>
@@ -96,7 +108,7 @@ class App extends Component {
                   }}
                   value="a"
                 >
-                  03/13/17 - 03/17/17
+                  03/13/17 - 03/16/17
                 </RadioButton>
                 <RadioButton
                   style={{
@@ -125,7 +137,7 @@ class App extends Component {
             </DataSetButtons>
 
             <Legend>
-              <h5>Hours Since Plowed</h5>
+              <h5>Hours Since Plow was on Road</h5>
               <div>
                 <Row>
                   <Grey />
@@ -133,31 +145,45 @@ class App extends Component {
                 </Row>
                 <Row>
                   <Green />
-                  0 - 6
+                  0 - 12
                 </Row>
                 <Row>
                   <Orange />
-                  6 - 12
+                  13 - 24
                 </Row>
                 <Row>
                   <Red />
-                  greater than 12
+                  greater than 24
                 </Row>
               </div>
             </Legend>
             <div style={{ margin: "0 auto" }}>
-              <Button
-                // type="primary"
-                shape="circle"
-                icon="info"
-                onClick={this.info}
-              />
+              <a
+                style={{ marginRight: 15 }}
+                href="https://github.com/alexsinfarosa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button icon="github">Alex</Button>
+              </a>
+              <a
+                href="https://github.com/d-w-olin/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button icon="github">Dean</Button>
+              </a>
             </div>
           </Left>
-
-          <Right>
-            <SyracuseMap />
-          </Right>
+          {!isLoading ? (
+            <Right>
+              <SyracuseMap />
+            </Right>
+          ) : (
+            <Right>
+              <Icon type="loading" style={{ fontSize: 20, color: "#08c" }} />
+            </Right>
+          )}
         </Body>
       </Main>
     );

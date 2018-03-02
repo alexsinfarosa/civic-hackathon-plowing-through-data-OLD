@@ -16,6 +16,7 @@ export const Top = styled.div`
   background: #fff;
 `;
 
+
 export const Body = styled.div`
   display: flex;
   width: 100%;

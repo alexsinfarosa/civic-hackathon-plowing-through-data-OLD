@@ -13,7 +13,7 @@ module.exports = function override(config, env) {
   // change importing css to less
   config = rewireLess.withLoaderOptions({
     modifyVars: {
-      "@primary-color": "#241c16",
+      "@primary-color": "#2274A5",
       "@font-family": "'Helvetica Neue', sans-serif"
     }
   })(config, env);

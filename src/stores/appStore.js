@@ -1,5 +1,9 @@
 import { observable, action, computed } from "mobx";
-import dataJson from "../assets/LT_J1_4.json";
+
+// datasets
+import dataJsonJ14 from "../assets/LT_J1_4.json";
+import dataJsonJ69 from "../assets/LT_J6_9.json";
+import dataJsonM1316 from "../assets/LT_M13_16.json";
 
 import format from "date-fns/format";
 import getTime from "date-fns/get_time";
@@ -11,11 +15,25 @@ export default class AppStore {
     this.fetch = fetcher;
   }
 
-  @observable date = new Date("2017/03/13 00:00:00");
-  @action setDate = d => (this.date = d);
+  // @observable date = new Date("2017/03/13 00:00:00");
+  // @action setDate = d => (this.date = d);
 
+  @observable isLoading = false;
   @observable dataSet = "a";
-  @action setDataSet = d => (this.dataSet = d);
+  @observable mainData = dataJsonJ14;
+  @action
+  setDataSet = d => {
+    this.dataSet = d;
+    if (d === "a") {
+      this.mainData = dataJsonM1316;
+    }
+    if (d === "b") {
+      this.mainData = dataJsonJ14;
+    }
+    if (d === "c") {
+      this.mainData = dataJsonJ69;
+    }
+  };
 
   @computed
   get dateRadio() {
@@ -95,7 +113,7 @@ export default class AppStore {
   @computed
   get allData() {
     return geojson.features.map((feature, i) => {
-      feature.properties["LT"] = dataJson[i]["LT"][this.sliderIdx];
+      feature.properties["LT"] = this.mainData[i]["LT"][this.sliderIdx];
       return feature;
     });
   }
