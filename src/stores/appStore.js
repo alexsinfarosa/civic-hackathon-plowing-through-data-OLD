@@ -22,17 +22,21 @@ export default class AppStore {
 
   @observable dataSet = "a";
   @observable mainData = dataJsonM1316;
+  @observable dataSet = "2017/03/13 00:00:00";
   @action
   setDataSet = d => {
     this.dataSet = d;
     if (d === "a") {
       this.mainData = dataJsonM1316;
+      this.dataSet = "2017/03/13 00:00:00";
     }
     if (d === "b") {
       this.mainData = dataJsonJ14;
+      this.dataSet = "2018/01/01 00:00:00";
     }
     if (d === "c") {
       this.mainData = dataJsonJ69;
+      this.dataSet = "2018/01/06 00:00:00";
     }
   };
 
@@ -41,7 +45,7 @@ export default class AppStore {
     let results = [];
     const min = getTime(new Date(date));
     for (let index = 0; index < 48; index++) {
-      results.push(format(min + index * 7200000, "MM/DD HH A"));
+      results.push(format(min + index * 7200000, "MM/DD ha"));
     }
     return results;
   };
@@ -49,7 +53,7 @@ export default class AppStore {
   @computed
   get marks() {
     let p = {};
-    this.dateRangeArr("2017/03/13 00:00:00").forEach((d, i) => {
+    this.dateRangeArr(this.dataSet).forEach((d, i) => {
       if (
         i === 0 ||
         i === 6 ||
@@ -69,7 +73,7 @@ export default class AppStore {
 
   @action
   formatter = idx => {
-    return this.dateRangeArr("2017/03/13 00:00:00")[idx];
+    return this.dateRangeArr(this.dataSet)[idx];
   };
 
   @computed
