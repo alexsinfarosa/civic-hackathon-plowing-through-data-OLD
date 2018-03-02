@@ -2,7 +2,8 @@
   "name": "Civic-Hackathon-Plowing-Through-the-Data",
   "version": "0.1.0",
   "author": "alexsinfarosa <as898@cornell.edu>",
-  "homepage": "https://alexsinfarosa.github.io/Civic-Hackathon-Plowing-Through-Data/",
+  "homepage":
+    "https://alexsinfarosa.github.io/Civic-Hackathon-Plowing-Through-Data/",
   "description": "Civic Hackathon: Plowing Through the Data",
   "private": true,
   "dependencies": {

@@ -69,6 +69,7 @@ export default class SyracuseMap extends Component {
         ref={m => (this.leafletMap = m)}
       >
         <TileLayer url="http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png" />
+
         <RenderGeojson />
       </Map>
     );

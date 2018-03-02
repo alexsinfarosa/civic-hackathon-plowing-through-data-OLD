@@ -15,109 +15,67 @@ export default class AppStore {
     this.fetch = fetcher;
   }
 
-  // @observable date = new Date("2017/03/13 00:00:00");
-  // @action setDate = d => (this.date = d);
-
   @observable isLoading = false;
+
+  @observable valueSlider = 0;
+  @action setValueSlider = d => (this.valueSlider = d);
+
   @observable dataSet = "a";
   @observable mainData = dataJsonM1316;
   @action
   setDataSet = d => {
-    console.log(d);
     this.dataSet = d;
     if (d === "a") {
       this.mainData = dataJsonM1316;
-      this.valueSlider = getTime(new Date("2017/03/13 00:00:00"));
     }
     if (d === "b") {
       this.mainData = dataJsonJ14;
-      this.valueSlider = getTime(new Date("2018/01/01 00:00:00"));
     }
     if (d === "c") {
       this.mainData = dataJsonJ69;
-      this.valueSlider = getTime(new Date("2018/01/06 00:00:00"));
     }
   };
 
-  @computed
-  get dateRadio() {
-    if (this.dataSet === "a") {
-      return new Date("2017/03/13 00:00:00");
+  @action
+  dateRangeArr = date => {
+    let results = [];
+    const min = getTime(new Date(date));
+    for (let index = 0; index < 48; index++) {
+      results.push(format(min + index * 7200000, "MM/DD HH A"));
     }
-
-    if (this.dataSet === "b") {
-      return new Date("2018/01/01 00:00:00");
-    }
-
-    if (this.dataSet === "c") {
-      return new Date("2018/01/06 00:00:00");
-    }
-  }
-
-  @computed
-  get min() {
-    return getTime(new Date(this.dateRadio));
-  }
-
-  @computed
-  get max() {
-    return this.min + 94 * 3600000;
-  }
+    return results;
+  };
 
   @computed
   get marks() {
-    let dates = {};
-    for (let index = 0; index < 95; index++) {
-      const date = format(new Date(this.min + index * 3600000), "MM/DD HH:00");
+    let p = {};
+    this.dateRangeArr("2017/03/13 00:00:00").forEach((d, i) => {
       if (
-        index === 0 ||
-        index === 12 ||
-        index === 24 ||
-        index === 36 ||
-        index === 48 ||
-        index === 60 ||
-        index === 72 ||
-        index === 84
+        i === 0 ||
+        i === 6 ||
+        i === 12 ||
+        i === 18 ||
+        i === 24 ||
+        i === 30 ||
+        i === 36 ||
+        i === 42 ||
+        i === 47
       ) {
-        dates[this.min + index * 3600000] = date;
+        p[i] = d;
       }
-      if (index === 94) {
-        dates[this.min + index * 3600000] = date;
-      }
-    }
-    return dates;
+    });
+    return p;
   }
-
-  @observable valueSlider = this.min;
-  @action setValueSlider = d => (this.valueSlider = d);
 
   @action
-  formatter = value => {
-    return format(new Date(value), "MM/DD/YY HH:mm");
+  formatter = idx => {
+    return this.dateRangeArr("2017/03/13 00:00:00")[idx];
   };
-
-  @computed
-  get sliderIndeces() {
-    let dates = [];
-    for (let index = 0; index < 95; index += 2) {
-      dates.push(this.min + index * 3600000);
-    }
-    return dates;
-  }
-
-  @computed
-  get sliderIdx() {
-    const idx = this.sliderIndeces.indexOf(this.valueSlider);
-    if (idx === -1) {
-      return 0;
-    }
-    return idx;
-  }
 
   @computed
   get allData() {
     return geojson.features.map((feature, i) => {
-      feature.properties["LT"] = this.mainData[i]["LT"][this.sliderIdx];
+      feature.properties["LT"] = this.mainData[i]["LT"][this.valueSlider];
       return feature;
     });
   }

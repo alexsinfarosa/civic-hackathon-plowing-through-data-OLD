@@ -62,28 +62,23 @@ class App extends Component {
 
   render() {
     const {
-      min,
-      max,
       marks,
       setValueSlider,
       formatter,
       setDataSet,
       isLoading
-      // valueSlider
     } = this.props.app;
-    // console.log(min, valueSlider, max);
+
     return (
       <Main>
         <Top>
           <div style={{ width: "100%", padding: "0 48px" }}>
             <Slider
-              min={min}
-              max={max}
-              // range={false}
-              // value={valueSlider}
-              step={7200000}
+              min={0}
+              max={47}
+              step={1}
               marks={marks}
-              tipFormatter={formatter}
+              tipFormatter={idx => formatter(idx)}
               onAfterChange={setValueSlider}
             />
           </div>
