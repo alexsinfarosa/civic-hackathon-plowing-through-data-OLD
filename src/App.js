@@ -50,10 +50,12 @@ class App extends Component {
 
           <p>
             Please note that the map does not indicate what sort of activity, if
-            any, the plow performed while on a particular street.
+            any, the plow performed while on a particular street, only that it
+            was present on that street.
           </p>
         </div>
       ),
+      okText: "Close",
       onOk() {}
     });
   };
@@ -67,15 +69,18 @@ class App extends Component {
       formatter,
       setDataSet,
       isLoading
+      // valueSlider
     } = this.props.app;
-
+    // console.log(min, valueSlider, max);
     return (
       <Main>
         <Top>
-          <div style={{ width: "100%", padding: "0 54px" }}>
+          <div style={{ width: "100%", padding: "0 48px" }}>
             <Slider
               min={min}
               max={max}
+              // range={false}
+              // value={valueSlider}
               step={7200000}
               marks={marks}
               tipFormatter={formatter}
@@ -92,13 +97,18 @@ class App extends Component {
               <h2 style={{ color: "#261C15", lineHeight: 1.3 }}>
                 Snow Plow Coverage Time Lapse
               </h2>
-              <Button size="small" icon="info" onClick={this.info}>
+
+              <Button
+                size="small"
+                onClick={this.info}
+                style={{ marginRight: 10 }}
+              >
                 How to use the map
               </Button>
             </Title>
 
             <DataSetButtons>
-              <h5>Available Data Sets</h5>
+              <h4>Available Data Sets</h4>
               <RadioGroup
                 style={{ display: "flex", flexDirection: "column" }}
                 defaultValue="a"
@@ -144,7 +154,7 @@ class App extends Component {
             </DataSetButtons>
 
             <Legend>
-              <h5>Hours Since Plow was on Road</h5>
+              <h4>Hours Since Plow was on Road</h4>
               <div>
                 <Row>
                   <Grey />

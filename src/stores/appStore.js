@@ -20,18 +20,21 @@ export default class AppStore {
 
   @observable isLoading = false;
   @observable dataSet = "a";
-  @observable mainData = dataJsonJ14;
+  @observable mainData = dataJsonM1316;
   @action
   setDataSet = d => {
     this.dataSet = d;
     if (d === "a") {
       this.mainData = dataJsonM1316;
+      this.valueSlider = getTime(new Date("2017/03/13 00:00:00"));
     }
     if (d === "b") {
       this.mainData = dataJsonJ14;
+      this.valueSlider = getTime(new Date("2018/01/01 00:00:00"));
     }
     if (d === "c") {
       this.mainData = dataJsonJ69;
+      this.valueSlider = getTime(new Date("2018/01/06 00:00:00"));
     }
   };
 
@@ -45,9 +48,9 @@ export default class AppStore {
       return new Date("2018/01/01 00:00:00");
     }
 
-    // if (this.dataSet === "c") {
-    return new Date("2018/01/06 00:00:00");
-    // }
+    if (this.dataSet === "c") {
+      return new Date("2018/01/06 00:00:00");
+    }
   }
 
   @computed
