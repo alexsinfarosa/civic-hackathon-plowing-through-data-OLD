@@ -5,6 +5,7 @@ export const Main = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100vh;
+  font-size: 12px;
 `;
 
 export const Top = styled.div`
@@ -29,7 +30,7 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-content: space-between;
-  height: 100%;
+  // height: 100vh;
   flex: 1;
   min-width: 250px;
   // background: teal;
