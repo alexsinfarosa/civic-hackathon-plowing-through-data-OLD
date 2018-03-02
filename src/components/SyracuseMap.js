@@ -17,7 +17,7 @@ export default class SyracuseMap extends Component {
     this.state = {
       lat: 43.035,
       lng: -76.14,
-      zoom: 13
+      zoom: 12.5
     };
   }
 

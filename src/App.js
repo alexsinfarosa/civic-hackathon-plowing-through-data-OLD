@@ -186,7 +186,7 @@ class App extends Component {
                 </Button>
               </a>
               <a
-                href="https://github.com/d-w-olin/"
+                href="https://github.com/d-w-olin/snowplows"
                 target="_blank"
                 rel="noopener noreferrer"
               >

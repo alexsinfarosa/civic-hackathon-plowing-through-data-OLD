@@ -23,6 +23,7 @@ export default class AppStore {
   @observable mainData = dataJsonM1316;
   @action
   setDataSet = d => {
+    console.log(d);
     this.dataSet = d;
     if (d === "a") {
       this.mainData = dataJsonM1316;
