@@ -20,7 +20,7 @@ import {
 
 // component
 import SyracuseMap from "./components/SyracuseMap";
-import logo from "./assets/logo.png";
+// import logo from "./assets/logo.png";
 import { Slider, Radio, Modal, Button, Icon } from "antd";
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -87,7 +87,7 @@ class App extends Component {
         <Body>
           <Left>
             <Title>
-              <img src={logo} alt="logo" width={80} height={80} />
+              {/* <img src={logo} alt="logo" width={80} height={80} /> */}
               <br />
               <h2 style={{ color: "#261C15", lineHeight: 1.3 }}>
                 Snow Plow Coverage Time Lapse
@@ -156,8 +156,7 @@ class App extends Component {
                   not plowed
                 </Row>
                 <Row>
-                  <Green />
-                  0 - 12
+                  <Green />0 - 12
                 </Row>
                 <Row>
                   <Orange />
