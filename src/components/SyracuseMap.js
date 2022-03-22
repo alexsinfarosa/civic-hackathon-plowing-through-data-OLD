@@ -1,6 +1,6 @@
-import { inject, observer } from 'mobx-react'
-import React, { Component } from 'react'
-import { GeoJSON, Map, Popup, TileLayer } from 'react-leaflet'
+import {inject, observer} from 'mobx-react'
+import React, {Component} from 'react'
+import {GeoJSON, Map, Popup, TileLayer} from 'react-leaflet'
 
 @inject('app')
 @observer
@@ -23,25 +23,25 @@ export default class SyracuseMap extends Component {
 
   render() {
     const position = [this.state.lat, this.state.lng]
-    const { allData } = this.props.app
+    const {allData} = this.props.app
 
-    const RenderGeojson = (d) => {
+    const RenderGeojson = d => {
       return allData.map((obj, i) => {
-        const { properties } = obj
+        const {properties} = obj
         const lapsedTime = properties.LT
-        let style = { color: '' }
+        let style = {color: ''}
 
         // console.log(lineColor[i]);
         if (lapsedTime >= 0 && lapsedTime <= 12) {
-          style = { color: 'green', opacity: 0.7 }
+          style = {color: 'green', opacity: 0.7}
         }
 
         if (lapsedTime > 12 && lapsedTime <= 24) {
-          style = { color: 'orange', opacity: 0.7 }
+          style = {color: 'orange', opacity: 0.7}
         }
 
         if (lapsedTime > 24) {
-          style = { color: 'red', opacity: 0.7 }
+          style = {color: 'red', opacity: 0.7}
         }
 
         return (
@@ -62,9 +62,9 @@ export default class SyracuseMap extends Component {
         }}
         center={position}
         zoom={this.state.zoom}
-        ref={(m) => (this.leafletMap = m)}
+        ref={m => (this.leafletMap = m)}
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png" />
         <RenderGeojson />
       </Map>
     )
