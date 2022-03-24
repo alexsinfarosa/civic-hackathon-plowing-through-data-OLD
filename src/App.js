@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { inject, observer } from "mobx-react";
+import React, {Component} from 'react'
+import {inject, observer} from 'mobx-react'
 
 // styled
 import {
@@ -15,22 +15,22 @@ import {
   Orange,
   Red,
   Row,
-  Title
-} from "./styles";
+  Title,
+} from './styles'
 
 // component
-import SyracuseMap from "./components/SyracuseMap";
-import logo from "./assets/logo.png";
-import { Slider, Radio, Modal, Button, Icon } from "antd";
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
+import SyracuseMap from './components/SyracuseMap'
+import logo from './assets/Logo.png'
+import {Slider, Radio, Modal, Button, Icon} from 'antd'
+const RadioButton = Radio.Button
+const RadioGroup = Radio.Group
 
-@inject("app")
+@inject('app')
 @observer
 class App extends Component {
   info = () => {
     Modal.info({
-      title: "The Snow Plow Coverage Time Lapse",
+      title: 'The Snow Plow Coverage Time Lapse',
       content: (
         <div>
           <p>
@@ -55,24 +55,19 @@ class App extends Component {
           </p>
         </div>
       ),
-      okText: "Close",
-      onOk() {}
-    });
-  };
+      okText: 'Close',
+      onOk() {},
+    })
+  }
 
   render() {
-    const {
-      marks,
-      setValueSlider,
-      formatter,
-      setDataSet,
-      isLoading
-    } = this.props.app;
+    const {marks, setValueSlider, formatter, setDataSet, isLoading} =
+      this.props.app
 
     return (
       <Main>
         <Top>
-          <div style={{ width: "100%", padding: "0 48px" }}>
+          <div style={{width: '100%', padding: '0 48px'}}>
             <Slider
               min={0}
               max={47}
@@ -89,14 +84,14 @@ class App extends Component {
             <Title>
               <img src={logo} alt="logo" width={80} height={80} />
               <br />
-              <h2 style={{ color: "#261C15", lineHeight: 1.3 }}>
+              <h2 style={{color: '#261C15', lineHeight: 1.3}}>
                 Snow Plow Coverage Time Lapse
               </h2>
 
               <Button
                 size="small"
                 onClick={this.info}
-                style={{ marginRight: 10 }}
+                style={{marginRight: 10}}
               >
                 How to use the map
               </Button>
@@ -105,7 +100,7 @@ class App extends Component {
             <DataSetButtons>
               <h4>Available Data Sets</h4>
               <RadioGroup
-                style={{ display: "flex", flexDirection: "column" }}
+                style={{display: 'flex', flexDirection: 'column'}}
                 defaultValue="a"
                 size="small"
                 onChange={e => setDataSet(e.target.value)}
@@ -114,9 +109,9 @@ class App extends Component {
                   style={{
                     width: 170,
                     marginBottom: 10,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignitems: "center"
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignitems: 'center',
                   }}
                   value="a"
                 >
@@ -126,9 +121,9 @@ class App extends Component {
                   style={{
                     width: 170,
                     marginBottom: 10,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignitems: "center"
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignitems: 'center',
                   }}
                   value="b"
                 >
@@ -137,9 +132,9 @@ class App extends Component {
                 <RadioButton
                   style={{
                     width: 170,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignitems: "center"
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignitems: 'center',
                   }}
                   value="c"
                 >
@@ -168,9 +163,9 @@ class App extends Component {
                 </Row>
               </div>
             </Legend>
-            <div style={{ margin: "0 auto" }}>
+            <div style={{margin: '0 auto'}}>
               <a
-                style={{ marginRight: 15 }}
+                style={{marginRight: 15}}
                 href="https://github.com/alexsinfarosa"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -196,13 +191,13 @@ class App extends Component {
             </Right>
           ) : (
             <Right>
-              <Icon type="loading" style={{ fontSize: 20, color: "#08c" }} />
+              <Icon type="loading" style={{fontSize: 20, color: '#08c'}} />
             </Right>
           )}
         </Body>
       </Main>
-    );
+    )
   }
 }
 
-export default App;
+export default App
